@@ -1,0 +1,105 @@
+<h4 class="mb-4">Cube animation - you can rotate, scale up and down it</h4>
+<div class="animation">
+  <canvas id="root" class="webgl"></canvas>
+</div>
+<script>
+  import * as THREE from 'three'
+  //@ts-ignore
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+  const scene = new THREE.Scene()
+  
+    // Red cube
+    // MESH = geometry + material
+    const geometry = new THREE.BoxGeometry(1,1,1)
+    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    const mesh = new THREE.Mesh(geometry, material)
+  
+    scene.add(mesh)
+  
+    const canvas = document.querySelector<HTMLElement>('.webgl')
+    const container = document.querySelector<HTMLElement>('.animation')
+  
+    if (container) {
+      const sizes = {
+      width: container.offsetWidth,
+      height: 300
+    }
+  
+  
+  
+    const camera = new THREE.PerspectiveCamera(75, sizes.width/sizes.height)
+  
+    window.addEventListener('resize', () => {
+      sizes.width = container.offsetWidth
+  
+      //update camera
+      camera.aspect = sizes.width / sizes.height
+      camera.updateProjectionMatrix()
+      renderer.setSize(sizes.width, sizes.height)
+    })
+  
+    camera.position.z = 1.5
+    scene.add(camera)
+  
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas
+    })
+  
+    renderer.setSize(sizes.width, sizes.height)
+  
+    const controls = new OrbitControls(camera, canvas)
+    controls.enableDamping = true
+  
+    // Clock
+    const clock = new THREE.Clock()
+  
+    // GSAP
+    // gsap.to(mesh.position, { duration: 2, delay: 2, x: 20 })
+    // gsap.to(mesh.position, { duration: 2, delay: 2, x: 0 })
+  
+    const tick = () => {
+      // Time
+      // const currentTime = Date.now()
+  
+      //Delta
+      // const deltaTime = currentTime - time
+      // time = currentTime
+  
+      // Update objects
+      // mesh.rotation.y += 0.001 * deltaTime
+      // The cube will rotate no matter of screen speed
+      const elapsedTime = clock.getElapsedTime()
+  
+      // one revolution per second
+      // mesh.rotation.y += elapsedTime * Math.PI * 2
+  
+      // moves in circle
+      // camera.position.y = Math.sin(elapsedTime)
+      // camera.position.x = Math.cos(elapsedTime)
+      camera.lookAt(mesh.position)
+  
+      // do not use getDelta
+  
+  
+      // Render
+      renderer.render(scene, camera)
+      window.requestAnimationFrame(tick)
+    }
+  
+  
+    tick()
+  
+    // Camera is an abstract class
+    // Array Camera render the scene from multiple cameras on specific areas of the render
+    // Stereo Camera render the scene through two cameras the mimic the eyes to create a parallax effect
+    // the cubeCanera do 6 renders, each one facing a different direction
+    // Perspective camera -> render the scene from the perscpective
+    //   const camera = new THREE.PerspectiveCamera(75, sizes.width/sizes.height, 1, 1000)
+  
+    // OrthograpicCamera is lack of perspective the object is the same far or near
+  
+    window.addEventListener('mousemove', (event) => {
+  
+    })
+    } 
+  </script>
