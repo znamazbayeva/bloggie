@@ -1,6 +1,6 @@
 ---
 title: "121. Best Time to Buy and Sell Stock)"
-description: "(Leetcode 1/365"
+description: "Leetcode 1/7. This is my new challenge leetcode. The first challenge is to code for one week."
 publishDate: "11 Feb 2024"
 updatedDate: 22 Jan 2024
 tags: ["leetcode"]
