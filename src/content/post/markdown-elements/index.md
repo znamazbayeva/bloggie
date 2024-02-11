@@ -1,12 +1,66 @@
 ---
-title: "A post of Markdown elements"
-description: "This post is for testing and listing a number of different markdown elements"
-publishDate: "22 Feb 2023"
+title: "121. Best Time to Buy and Sell Stock)"
+description: "(Leetcode 1/365"
+publishDate: "11 Feb 2024"
 updatedDate: 22 Jan 2024
-tags: ["test", "markdown"]
+tags: ["leetcode"]
 ---
 
-## This is a H2 Heading
+Certainly! Below is the markdown version of the question from the provided link:
+
+---
+
+## Best Time to Buy and Sell Stock
+
+Say you have an array for which the i-th element is the price of a given stock on day i.
+
+If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+
+Note that you cannot sell a stock before you buy one.
+
+**Example 1:**
+
+```
+Input: [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+             Not 7-1 = 6, as selling price needs to be larger than buying price.
+```
+
+**Example 2:**
+
+```
+Input: [7,6,4,3,1]
+Output: 0
+Explanation: In this case, no transactions are done and the max profit = 0.
+```
+
+---
+
+You can also find the question [here](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/).
+
+
+```python
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        n = len(prices)
+        l, r = 0, 1
+        max_price = 0
+        while r < n:
+            diff = prices[r] - prices[l]
+            if prices[l] > prices[r]:
+                l = r
+            elif prices[l] < prices[r]:
+                max_price = max(max_price, diff)
+            r+= 1
+        return max_price
+```
+
+<!-- ## This is a H2 Heading
 
 ### This is a H3 Heading
 
@@ -162,4 +216,4 @@ Image in the aliased assets folder: `src/assets/about-astro.png`
 
 ## Links
 
-[Content from markdown-it](https://markdown-it.github.io/)
+[Content from markdown-it](https://markdown-it.github.io/) -->
