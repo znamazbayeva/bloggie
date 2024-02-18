@@ -1,16 +1,12 @@
 ---
-title: "121. Best Time to Buy and Sell Stock)"
+title: "121. Best Time to Buy and Sell Stock"
 description: "Leetcode 1/7. This is my new challenge leetcode. The first challenge is to code for one week."
 publishDate: "11 Feb 2024"
 updatedDate: 22 Jan 2024
 tags: ["leetcode"]
 ---
 
-Certainly! Below is the markdown version of the question from the provided link:
-
----
-
-## Best Time to Buy and Sell Stock
+## Problem Description
 
 Say you have an array for which the i-th element is the price of a given stock on day i.
 
@@ -38,6 +34,8 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 ---
 
 You can also find the question [here](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/).
+
+## Solution
 
 
 ```python
