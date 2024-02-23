@@ -68,7 +68,7 @@
       // Update objects
       // mesh.rotation.y += 0.001 * deltaTime
       // The cube will rotate no matter of screen speed
-      const elapsedTime = clock.getElapsedTime()
+      clock.getElapsedTime()
   
       // one revolution per second
       // mesh.rotation.y += elapsedTime * Math.PI * 2
@@ -98,7 +98,7 @@
   
     // OrthograpicCamera is lack of perspective the object is the same far or near
   
-    window.addEventListener('mousemove', (event) => {
+    window.addEventListener('mousemove', () => {
   
     })
     } 
